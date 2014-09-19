@@ -5,8 +5,9 @@ public class PlayerController : MonoBehaviour
 {
 	private GameObject boundaries;
 	private GridController grid;
+	public GameObject shotContainer;
 
-	public float playerSizeInPixels;
+	public float playerScale = 1; //currently a multiplier for the player size, not very useful yet
 
 	public float speed, fireRate; //the player's move speed (higher = faster), and the fire rate (lower = faster)
 	private GameObject existingShot; //holds the shot that was already fired, for fire rate limiting purposes
@@ -19,8 +20,8 @@ public class PlayerController : MonoBehaviour
 								//so unity grabs the Transform property of whatever you put here
 
 	private Vector2 oldMovementAxis; //for alignment 'snapping' uses
-	private float stepSizeX, stepSizeY; //defining the size of the "step" of the player object, kind of like saying he moves in units of this variable
-	public float stepSmoothness = 6; //the higher, the smooth each step is, but too high and the player might have trouble with the controls
+	//private float stepSizeX, stepSizeY; //defining the size of the "step" of the player object, kind of like saying he moves in units of this variable
+	//public float stepSmoothness = 6; //the higher, the smooth each step is, but too high and the player might have trouble with the controls
 
 	// Use this for initialization
 	void Start () 
@@ -28,11 +29,11 @@ public class PlayerController : MonoBehaviour
 		boundaries = GameObject.FindWithTag("Boundaries");
 		grid = GameObject.FindWithTag("Grid").GetComponent<GridController>();
 	
-		transform.localScale = new Vector3(transform.localScale.x * playerSizeInPixels,transform.localScale.y * playerSizeInPixels,transform.localScale.z);
+		transform.localScale = new Vector3(transform.localScale.x * playerScale,transform.localScale.y * playerScale,transform.localScale.z);
 
 		oldMovementAxis = new Vector2(0.0f, 0.0f);
-		stepSizeX = ((boundaries.transform.localScale.x * 2) / grid.numberOfColumns) / stepSmoothness;
-		stepSizeY = ((boundaries.transform.localScale.y * 2) / grid.numberOfLines) / stepSmoothness;
+		//stepSizeX = ((boundaries.transform.localScale.x * 2) / grid.numberOfColumns) / stepSmoothness;
+		//stepSizeY = ((boundaries.transform.localScale.y * 2) / grid.numberOfLines) / stepSmoothness;
 	}
 	
 	// Update is called once per frame
@@ -40,12 +41,11 @@ public class PlayerController : MonoBehaviour
 	{
 		//spawns the shot
 		if (Input.GetButton("Fire1") && Time.time > nextFire && !existingShot) {
-			//if (shotSpawn.renderer.bounds.Intersects(boundaries.renderer.bounds)) { //checking whether the shot spawned in the games boundaries
-				existingShot = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-				nextFire = Time.time + fireRate;
+			existingShot = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			existingShot.transform.parent = shotContainer.transform;
+			nextFire = Time.time + fireRate;
 
-				//audio.Play(); //plays the shot's sound, if there's any
-			//}
+			//audio.Play(); //plays the shot's sound, if there's any
 		}
 	}
 	
@@ -64,10 +64,10 @@ public class PlayerController : MonoBehaviour
 
 	void FlipPlayer(float x, float y)
 	{
-		/* start of the code that align the player with the walls; sort of like snapping, but along one axis only; happened on the classic too */
+		/* start of the code that align the player with the walls; sort of like grid snapping, but along one axis only; happened on the classic too */
 		if (oldMovementAxis.x == 0 && x != 0)
 		{
-			//align along the Y axis
+			//TODO: align along the Y axis
 			/*
 			float playerPositionFactor_Line = transform.position.y/(boundaries.transform.localScale.y/grid.numberOfLines); //formula to get an aproximate position of the player, relative to the background grid
 			playerPositionFactor_Line = Mathf.Min();
@@ -76,11 +76,11 @@ public class PlayerController : MonoBehaviour
 		}
 		else if (oldMovementAxis.y == 0 && y != 0)
 		{
-			//align along the X axis
+			//TODO: align along the X axis
 
 		}
 
-		//performs rotations based on the direction the player is going; also, keep in mind Euler angles are degree based
+		//performs rotations based on the direction the player is going; also, keep in mind Euler angles are degrees, not radians
 		if (x > 0)
 			transform.rotation = Quaternion.Euler(0.0f,0.0f,270.0f);
 		else if (x < 0)
@@ -90,5 +90,9 @@ public class PlayerController : MonoBehaviour
 				transform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);
 			else if (y < 0)
 				transform.rotation = Quaternion.Euler(0.0f,0.0f,180.0f);		 
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		//Debug.Log (other.gameObject.ToString() + " " + other.gameObject.GetInstanceID().ToString());
 	}
 }

@@ -7,10 +7,12 @@ public class GameController : MonoBehaviour {
 	public GameObject boundaries;
 	public GameObject grid;
 
+	public EnemySpawner enemySpawner;
+
 
 	// Use this for initialization
 	void Start () {
-
+		enemySpawner = gameObject.GetComponent<EnemySpawner>();
 	}
 	
 	// Update is called once per frame

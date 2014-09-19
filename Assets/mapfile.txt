@@ -1,6 +1,7 @@
 standardTerrain
 20,20
 20@brickFull
+1@brickFull,1@spawner,16@blank,1@spawner,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
@@ -16,7 +17,6 @@ standardTerrain
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
+1@brickFull,7@blank,3@brickFull,8@blank,1@brickFull
+1@brickFull,7@blank,1@brickFull,1@base,1@brickFull,8@blank,1@brickFull
 20@brickFull

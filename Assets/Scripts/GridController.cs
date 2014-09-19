@@ -5,6 +5,9 @@ using System.Linq;
 
 public class GridController : MonoBehaviour {
 
+	public GameController gameController;
+	public GameObject enemySpawnerPrefab;
+
 	public int numberOfLines, numberOfColumns; //how big you want the map to be, x lines by y columns
 	public float squareSizePixels; //meant to be how big in pixels you want each square sprite to be, no matter it's original size
 	public GameObject prefabSpriteQuad, boundaries; //references: one to the prefab for each tile, the other to the boundaries of the game
@@ -47,7 +50,7 @@ public class GridController : MonoBehaviour {
 					string[] blockSplit = block.Split('@');
 					for (k = j; k < (j + int.Parse(blockSplit[0])); k++)
 					{
-						mapfileToSpritesMatrix[i-2,k] = blockSplit[1];
+						mapfileToSpritesMatrix[k,i-2] = blockSplit[1];
 						//Debug.Log((i-2) + " " + k + "; " + mapfileToSpritesMatrix[i-2,j]);
 					}
 					j=k;
@@ -55,7 +58,7 @@ public class GridController : MonoBehaviour {
 			}
 		}
 
-		if (terrainSpritesArray != null) // checks to see if the terrain sprites are loaded
+		if (terrainSpritesArray != null) // checks to see if the terrain sprites are loaded, if that's ok, starts to fill the map
 		{
 			Sprite spriteFromMapfile;
 			for(int i = 0; i < numberOfLines; i++)
@@ -63,13 +66,18 @@ public class GridController : MonoBehaviour {
 				for(int j = 0; j < numberOfColumns; j++)
 				{
 					int indexOfSprite = Array.FindIndex(terrainSpritesArray, s => s.name == mapfileToSpritesMatrix[i,j]); //does some LINQ to find the sprite based on name provided by the mapfile
-					Debug.Log(i + " " + j + "; " + mapfileToSpritesMatrix[i,j]);
+					//Debug.Log(i + " " + j + "; " + mapfileToSpritesMatrix[i,j]);
+
+					if (mapfileToSpritesMatrix[i,j] == "spawner") {
+						//gameController.enemySpawner.listOfEnemySpawners.Add(gridMatrix[i,j].transform);
+						GameObject newSpawner = Instantiate(enemySpawnerPrefab,gridMatrix[i,j].transform.position,Quaternion.Euler(Vector3.zero)) as GameObject;
+						gameController.enemySpawner.listOfEnemySpawners.Add(newSpawner);
+					}
 
 					if (indexOfSprite < 0)
 						spriteFromMapfile = null;
 					else
 						spriteFromMapfile = terrainSpritesArray.ElementAt(indexOfSprite);
-					//Debug.Log(spriteFromMapfile);
 
 					foreach(SpriteRenderer spriteRenderer in gridMatrix[i,j].GetComponentsInChildren<SpriteRenderer>())
 					{
@@ -85,7 +93,7 @@ public class GridController : MonoBehaviour {
 				}
 			}
 		} else 	{
-			Debug.Log("Something happened to the terrain! Maybe it doesn't exist, maybe it's misspelled in the mapfile!");
+			Debug.Log("Something happened to the terrain! Maybe it doesn't exist, or maybe it's mispelled in the mapfile!");
 			throw new ArgumentNullException();
 		}
 	}

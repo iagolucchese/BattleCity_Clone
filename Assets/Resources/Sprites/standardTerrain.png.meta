@@ -1,6 +1,24 @@
 fileFormatVersion: 2
 guid: c7b0bccafa5ffff43a2ecaef3032d25d
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: brickRight
+    21300002: brickBot
+    21300004: brickLeft
+    21300006: brickTop
+    21300008: brickFull
+    21300010: metalRight
+    21300012: metalBot
+    21300014: metalLeft
+    21300016: metalTop
+    21300018: metalFull
+    21300020: water
+    21300022: foliage
+    21300024: ice
+    21300026: playerTankUp
+    21300028: brickBotRight
+    21300030: brickBotLeft
+    21300032: base
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -192,7 +210,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: brickBottomLeft
+    - name: brickBotLeft
       rect:
         serializedVersion: 2
         x: 512
