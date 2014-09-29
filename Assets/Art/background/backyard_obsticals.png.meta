@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 3dcef9ad4e4e1d9499d0d9dd09bd0189
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: backyard_obsticals_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 226
+        width: 84
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_1
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 225
+        width: 84
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_2
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 225
+        width: 81
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 116
+        width: 85
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_4
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 116
+        width: 85
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_5
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 78
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_6
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 87
+        width: 47
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_7
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 17
+        width: 85
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_8
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 17
+        width: 85
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 67
+        width: 84
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_10
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 16
+        width: 85
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_11
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 14
+        width: 51
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_obsticals_12
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 14
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
