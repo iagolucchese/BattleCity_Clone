@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
 
 	public float playerScale = 1; //currently a multiplier for the player size, not very useful yet
 
-	public float speed, fireRate; //the player's move speed (higher = faster), and the fire rate (lower = faster)
+	public float moveSpeed = 2f, fireRate = 0.2f; //the player's move speed (higher = faster), and the fire rate (lower = faster)
+	private float nextFire; //tells the game how long in total should it wait to let the player fire again
 	private GameObject existingShot; //holds the shot that was already fired, for fire rate limiting purposes
-	private float nextFire; //a variable that tells the game how long in total should it wait to let the player fire again
 
-	public GUIText debugText; //reference a GUItext element
+	public GUIText debugText; //debug text placeholder
 
-	public GameObject shot; //the actual shot Prefab
+	public GameObject shotPrefab; //the actual shot Prefab
 	public Transform shotSpawn; //the GameObject that is used as a positional reference for all shots to spawn; it is declared as a Transform, 
 								//so unity grabs the Transform property of whatever you put here
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 	{
 		//spawns the shot
 		if (Input.GetButton("Fire1") && Time.time > nextFire && !existingShot) {
-			existingShot = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			existingShot = (GameObject)Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation);
 			existingShot.transform.parent = shotContainer.transform;
 			nextFire = Time.time + fireRate;
 
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 		if (moveHorizontal != 0 && moveVertical != 0) moveVertical = 0; //prevents diagonal movement, swaps it with horizontal movement
 
 		FlipPlayer (moveHorizontal, moveVertical);
-		rigidbody2D.velocity = new Vector2 (moveHorizontal, moveVertical) * speed;
+		rigidbody2D.velocity = new Vector2 (moveHorizontal, moveVertical) * moveSpeed;
 
 		oldMovementAxis = new Vector2(moveHorizontal,moveVertical);
 

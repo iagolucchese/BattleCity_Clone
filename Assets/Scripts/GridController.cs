@@ -51,7 +51,6 @@ public class GridController : MonoBehaviour {
 					for (k = j; k < (j + int.Parse(blockSplit[0])); k++)
 					{
 						mapfileToSpritesMatrix[k,i-2] = blockSplit[1];
-						//Debug.Log((i-2) + " " + k + "; " + mapfileToSpritesMatrix[i-2,j]);
 					}
 					j=k;
 				}
@@ -66,7 +65,6 @@ public class GridController : MonoBehaviour {
 				for(int j = 0; j < numberOfColumns; j++)
 				{
 					int indexOfSprite = Array.FindIndex(terrainSpritesArray, s => s.name == mapfileToSpritesMatrix[i,j]); //does some LINQ to find the sprite based on name provided by the mapfile
-					//Debug.Log(i + " " + j + "; " + mapfileToSpritesMatrix[i,j]);
 
 					if (mapfileToSpritesMatrix[i,j] == "spawner") {
 						//gameController.enemySpawner.listOfEnemySpawners.Add(gridMatrix[i,j].transform);

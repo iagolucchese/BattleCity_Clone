@@ -21,19 +21,26 @@ public class EnemySpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (timeToSpawn <= Time.deltaTime && enemyCount < enemyLimit){ //if enough time has passed, spawn an enemy
-			GameObject randomSpawner = listOfEnemySpawners[Random.Range(0,listOfEnemySpawners.Count)];
-									
-			GameObject newEnemy = Instantiate(listOfEnemyPrefabs[Random.Range(0,listOfEnemyPrefabs.Count)],randomSpawner.transform.position,Quaternion.Euler(Vector3.zero)) as GameObject; //creates the new enemy gameObject
-			newEnemy.transform.parent = enemyContainer.transform; //puts it under the container for enemies
-
-			enemyCount++;
-			timeToSpawn += enemySpawnDelay;
+			SpawnEnemy();
 		}
-		timeToSpawn -= Time.deltaTime;
+		if (timeToSpawn > 0)
+			timeToSpawn -= Time.deltaTime;
+	}
+
+	void SpawnEnemy() {
+		GameObject randomSpawner = listOfEnemySpawners[Random.Range(0,listOfEnemySpawners.Count)];
+		
+		GameObject newEnemy = Instantiate(listOfEnemyPrefabs[Random.Range(0,listOfEnemyPrefabs.Count)],randomSpawner.transform.position,Quaternion.Euler(Vector3.zero)) as GameObject; //creates the new enemy gameObject
+		newEnemy.transform.parent = enemyContainer.transform; //puts it under the container for enemies
+		
+		enemyCount++;
+		timeToSpawn += enemySpawnDelay;
 	}
 
 	public void enemyKilled(GameObject enemy){
-		timeToSpawn += enemySpawnDelay; //trying to prevent instant respawn after you kill an enemy
+		if (timeToSpawn <= 0)
+			timeToSpawn += enemySpawnDelay; //trying to prevent instant respawn after you kill an enemy
+
 		Debug.Log("Enemy Killed!");
 		enemyCount--;
 	}
