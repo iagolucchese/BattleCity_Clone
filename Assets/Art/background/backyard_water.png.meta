@@ -1,0 +1,238 @@
+fileFormatVersion: 2
+guid: 8385b0bbc4be07948ba5a034d7fb77df
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: backyard_water_0
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 268
+        width: 76
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_1
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 253
+        width: 54
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_2
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 255
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_3
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 249
+        width: 54
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_4
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 252
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 150
+        width: 84
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_6
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 148
+        width: 84
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_7
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 150
+        width: 84
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_8
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 150
+        width: 85
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_9
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 123
+        width: 66
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_10
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 125
+        width: 66
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_11
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 27
+        width: 76
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_12
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 105
+        width: 66
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_13
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 106
+        width: 66
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_14
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 90
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_15
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 93
+        width: 39
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_16
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 75
+        width: 60
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_17
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 74
+        width: 73
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_18
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 61
+        width: 69
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_19
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 54
+        width: 61
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: backyard_water_20
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 33
+        width: 71
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
