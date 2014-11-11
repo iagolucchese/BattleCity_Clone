@@ -11,6 +11,10 @@ public class ShotController : MonoBehaviour {
 		rigidbody2D.AddForce(new Vector2(Mathf.Sin(-rotation)*100*shotSpeed,Mathf.Cos(-rotation)*100*shotSpeed)); //the sin and cosin functions basically work to return either -1, 0, or 1, to determine the direction of the force
 	}
 
+	public void setSprite(string spriteName) {
+
+	}
+
 	void OnTriggerEnter2D(Collider2D other) {
 		CollisionDetected(other);
 	}

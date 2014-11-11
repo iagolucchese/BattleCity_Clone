@@ -40,8 +40,6 @@ public class EnemySpawner : MonoBehaviour {
 	public void enemyKilled(GameObject enemy){
 		if (timeToSpawn <= 0)
 			timeToSpawn += enemySpawnDelay; //trying to prevent instant respawn after you kill an enemy
-
-		Debug.Log("Enemy Killed!");
 		enemyCount--;
 	}
 }
