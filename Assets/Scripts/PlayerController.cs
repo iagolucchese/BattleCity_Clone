@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 	void Update () 
 	{
 		//spawns the shot
-		if (Input.GetButton("Fire1") && Time.time > nextFire && !existingShot) //if the player pressed the button, and the shot's delay has passed, AND there is no other shot in the scene
+		if (Input.GetButton("Fire1")) //if the player pressed the button, and the shot's delay has passed, AND there is no other shot in the scene
 			FireShot ();
 	}
 	
@@ -39,11 +39,12 @@ public class PlayerController : MonoBehaviour
 	}
 
 	void FireShot() {
-		existingShot = (GameObject)Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation); //spawns a shot inside the showspawn's position and rotation
-		existingShot.transform.parent = shotContainer.transform; //puts the shot into the container
-		nextFire = Time.time + fireRate; //adds to the shot delay
-		
-		//audio.Play(); //plays the shot's sound, if there's any
+		if (Time.time > nextFire && !existingShot){
+			existingShot = (GameObject)Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation); //spawns a shot inside the showspawn's position and rotation
+			existingShot.transform.parent = shotContainer.transform; //puts the shot into the container
+			nextFire = Time.time + fireRate; //adds to the shot delay
+			//audio.Play(); //plays the shot's sound, if there's any
+		}
 	}
 
 	void FlipPlayer(float x, float y)

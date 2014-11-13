@@ -14,8 +14,9 @@ public class EnemyController : MonoBehaviour {
 	
 	/* variables for the enemy AI */
 	public float pickRandomDirectionDelay = 0.5f; //minimum amount of time after the enemy bumps into a wall and before he changes direction
+	private Vector2 direction = new Vector2(0,0);
 
-	private RaycastHit2D raycast;
+	private RaycastHit2D[] hits;
 
 	// Use this for initialization
 	void Start () {
@@ -24,15 +25,28 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		raycast = Physics2D.Raycast (this.transform.position, this.transform.up, 20f, 9); //20f is just a big enough number for anything, and 9 is the player layer
-		if (raycast)
-			FireShot ();
+		hits = Physics2D.RaycastAll(shotSpawn.transform.position, shotSpawn.transform.up, 20f); //20f is just a big enough number for anything
+		foreach(RaycastHit2D h in hits) {
+			if (h.collider && h.collider.gameObject.tag == "Player")
+				FireShot();
+		}
 	}
 
 	void FireShot() {
-		existingShot = (GameObject)Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation); //spawns a shot inside the showspawn's position and rotation
-		existingShot.transform.parent = shotContainer.transform; //puts the shot into the container
-		nextFire = Time.time + fireRate; //adds to the shot delay
+		if (Time.time > nextFire && !existingShot){
+			existingShot = (GameObject)Instantiate(shotPrefab, shotSpawn.position, shotSpawn.rotation); //spawns a shot inside the showspawn's position and rotation
+			existingShot.transform.parent = shotContainer.transform; //puts the shot into the container
+			nextFire = Time.time + fireRate; //adds to the shot delay
+		}
+	}
+
+	void NewRandomDirection() {
+		//TODO: Randomizes a different direction
+	}
+
+	void OnCollisionEnter2D(Collision2D other) {
+		if (other.collider.tag = "Wall")
+			NewRandomDirection();
 	}
 
 	void OnDestroy(){

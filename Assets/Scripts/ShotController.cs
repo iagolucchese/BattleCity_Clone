@@ -11,10 +11,6 @@ public class ShotController : MonoBehaviour {
 		rigidbody2D.AddForce(new Vector2(Mathf.Sin(-rotation)*100*shotSpeed,Mathf.Cos(-rotation)*100*shotSpeed)); //the sin and cosin functions basically work to return either -1, 0, or 1, to determine the direction of the force
 	}
 
-	public void setSprite(string spriteName) {
-
-	}
-
 	void OnTriggerEnter2D(Collider2D other) {
 		CollisionDetected(other);
 	}
@@ -26,22 +22,20 @@ public class ShotController : MonoBehaviour {
 	void CollisionDetected(Collider2D other){
 		//gameObject.GetComponent<BoxCollider2D>().size += new Vector2(0.2f,0f); //this is basically an "explosion collision", by making the box bigger when it collides with something
 
-		if (other.tag == "Enemy") {
+		if (other.gameObject.layer == gameObject.layer) {
 			Destroy(other.gameObject);
-			Destroy(this.gameObject);
+			DestroyThis(0f);
 		}
+
 		if (other.tag == "Wall") {
 			Destroy(other.gameObject);
-			
-			Destroy(this.gameObject,selfDestructDelay);//through this delay in destroy, i intend to take out anything that immediatly collides with the shot, but hopefully not anything behind it
-		}
-		if (other.tag == "Player") {
-			Destroy(other.gameObject);
-			Destroy(this.gameObject);
+			DestroyThis(selfDestructDelay);//through this delay in destroy, i intend to take out anything that immediatly collides with the shot, but hopefully not anything behind it
 		}
 	}
 
-	void OnDestroy() {
+	void DestroyThis(float delay = 0f) {
 		//TODO: Insert shot explosion animation here
+
+		Destroy(this.gameObject,delay);
 	}
 }

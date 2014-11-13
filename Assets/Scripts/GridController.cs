@@ -83,7 +83,7 @@ public class GridController : MonoBehaviour {
 					}
 					foreach(Collider2D collider in gridMatrix[i,j].GetComponentsInChildren<Collider2D>())
 					{
-						if (spriteFromMapfile)
+						if (spriteFromMapfile && spriteFromMapfile.name.Contains("Full"))
 							collider.enabled = true;
 						else
 							collider.enabled = false;

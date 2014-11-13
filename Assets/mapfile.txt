@@ -3,6 +3,9 @@ standardTerrain
 20@brickFull
 1@brickFull,1@spawner,16@blank,1@spawner,1@brickFull
 1@brickFull,18@blank,1@brickFull
+1@brickFull,4@blank,1@water,9@blank,1@water,3@blank,1@brickFull
+1@brickFull,3@blank,3@water,7@blank,3@water,2@blank,1@brickFull
+1@brickFull,4@blank,1@water,9@blank,1@water,3@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
@@ -12,11 +15,8 @@ standardTerrain
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,7@blank,3@brickFull,8@blank,1@brickFull
+1@brickFull,2@blank,1@metalFull,1@blank,1@metalFull,13@blank,1@brickFull
+1@brickFull,3@blank,1@metalFull,14@blank,1@brickFull
+1@brickFull,2@blank,1@metalFull,1@blank,1@metalFull,13@blank,1@brickFull
 1@brickFull,7@blank,1@brickFull,1@base,1@brickFull,8@blank,1@brickFull
 20@brickFull
