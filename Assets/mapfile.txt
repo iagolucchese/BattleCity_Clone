@@ -8,9 +8,9 @@ standardTerrain
 1@brickFull,4@blank,1@water,9@blank,1@water,3@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
+1@brickFull,2@blank,14@brickFull,2@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
+1@brickFull,1@blank,6@brickFull,4@blank,6@brickFull,1@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull

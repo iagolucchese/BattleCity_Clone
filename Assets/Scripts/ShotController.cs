@@ -27,6 +27,9 @@ public class ShotController : MonoBehaviour {
 			DestroyThis(0f);
 		}
 
+		if(other.tag == "Shot")
+			DestroyThis(selfDestructDelay);
+
 		if (other.tag == "Wall") {
 			Destroy(other.gameObject);
 			DestroyThis(selfDestructDelay);//through this delay in destroy, i intend to take out anything that immediatly collides with the shot, but hopefully not anything behind it
