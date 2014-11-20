@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour {
 	void SpawnEnemy() {
 		if (listOfEnemyPrefabs.Count > 0 && listOfEnemyPrefabs.Count > 0) {
 			GameObject randomSpawner = listOfEnemySpawners[Random.Range(0,listOfEnemySpawners.Count)];
-			GameObject newEnemy = Instantiate(listOfEnemyPrefabs[Random.Range(0,listOfEnemyPrefabs.Count)],randomSpawner.transform.position,Quaternion.Euler(Vector3.zero)) as GameObject; //creates the new enemy gameObject
+			GameObject newEnemy = Instantiate(listOfEnemyPrefabs[Random.Range(0,listOfEnemyPrefabs.Count)],randomSpawner.transform.position,Quaternion.Euler(0f,0f,-90f)) as GameObject; //creates the new enemy gameObject
 			newEnemy.transform.parent = enemyContainer.transform; //puts it under the container for enemies
 			enemyCount++;
 			timeToSpawn += enemySpawnDelay;

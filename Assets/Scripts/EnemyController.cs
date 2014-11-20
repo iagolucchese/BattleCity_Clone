@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
 		directions = new float[4]{0f,90f,180f,270f};
 		shotContainer = GameObject.FindGameObjectWithTag("ShotContainer");
-		rigidbody2D.velocity = new Vector2(0,-1) * moveSpeed; //moves forward again
+		newVelocity = new Vector2(0,-1) * moveSpeed; //moves forward again
 	}
 	
 	// Update is called once per frame
@@ -56,20 +56,20 @@ public class EnemyController : MonoBehaviour {
 			transform.rotation = Quaternion.Euler(0,0,directions[newDirection]); //picks a random direction from the directions's array and sets it
 
 			switch(newDirection){
-			case 0:
-				newVelocity = new Vector2(0,1) * moveSpeed; //moves forward again
+			case 0: //0 degrees
+				newVelocity = new Vector2(-1,0) * moveSpeed; //left
 				break;
 			
-			case 1:
-				newVelocity = new Vector2(-1,0) * moveSpeed; //moves forward again
+			case 1: //90 degrees
+				newVelocity = new Vector2(0,-1) * moveSpeed; //down
 				break;
 			
-			case 2:
-				newVelocity = new Vector2(0,-1) * moveSpeed; //moves forward again
+			case 2: //180 degrees
+				newVelocity = new Vector2(1,0) * moveSpeed; //right
 				break;
 
-			case 3:
-				newVelocity = new Vector2(1,0) * moveSpeed; //moves forward again
+			case 3: //270 degrees
+				newVelocity = new Vector2(0,1) * moveSpeed; //up
 				break;
 			default:
 				newVelocity = Vector2.zero;
@@ -82,12 +82,12 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		if (other.collider.tag == "Wall")
+		if (other.collider.tag == "Wall" || other.collider.tag == "Enemy")
 			NewRandomDirection();
 	}
 
 	void OnCollisionStay2D(Collision2D other) {
-		if (other.collider.tag == "Wall")
+		if (other.collider.tag == "Wall" || other.collider.tag == "Enemy")
 			NewRandomDirection();
 	}
 

@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
 	public GameObject playerObject;
 	public GameObject boundaries;
 	public GameObject grid;
+	public LivesManager livesManager;
 
 	public EnemySpawner enemySpawner;
 

@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour
 	public float moveSpeed = 2f, fireRate = 0.2f; //the player's move speed (higher = faster), and the fire rate (lower = faster)
 	private float nextFire; //tells the game how long in total should it wait to let the player fire again
 	private GameObject existingShot; //holds the shot that was already fired, for fire rate limiting purposes
-
-	//public GUIText debugText; //debug text placeholder
-
+	
 	void Start () 
 	{
 		//transform.localScale = new Vector3(transform.localScale.x * playerScale,transform.localScale.y * playerScale,transform.localScale.z);
@@ -59,5 +57,9 @@ public class PlayerController : MonoBehaviour
 				transform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);
 			else if (y < 0)
 				transform.rotation = Quaternion.Euler(0.0f,0.0f,180.0f);		 
+	}
+
+	void OnDestroy() { //don't spawn things in here
+
 	}
 }
