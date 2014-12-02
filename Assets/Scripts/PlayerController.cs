@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 		//transform.localScale = new Vector3(transform.localScale.x * playerScale,transform.localScale.y * playerScale,transform.localScale.z);
 	}
 	
-	// Update is called once per frame
 	void Update () 
 	{
 		//spawns the shot
@@ -60,6 +59,6 @@ public class PlayerController : MonoBehaviour
 	}
 
 	void OnDestroy() { //don't spawn things in here
-
+		GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().PlayerDied();
 	}
 }

@@ -67,9 +67,12 @@ public class GridController : MonoBehaviour {
 					int indexOfSprite = Array.FindIndex(terrainSpritesArray, s => s.name == mapfileToSpritesMatrix[i,j]); //does some LINQ to find the sprite based on name provided by the mapfile
 
 					if (mapfileToSpritesMatrix[i,j] == "spawner") {
-						//gameController.enemySpawner.listOfEnemySpawners.Add(gridMatrix[i,j].transform);
 						GameObject newSpawner = Instantiate(enemySpawnerPrefab,gridMatrix[i,j].transform.position,Quaternion.Euler(Vector3.zero)) as GameObject;
 						gameController.enemySpawner.listOfEnemySpawners.Add(newSpawner);
+					}
+					if (mapfileToSpritesMatrix[i,j] == "playerSpawn") {
+						GameObject newSpawner = Instantiate(enemySpawnerPrefab,gridMatrix[i,j].transform.position,Quaternion.Euler(Vector3.zero)) as GameObject;
+						gameController.playerSpawn = newSpawner;
 					}
 
 					if (indexOfSprite < 0)
@@ -90,6 +93,8 @@ public class GridController : MonoBehaviour {
 					}
 				}
 			}
+			/* finished parsing succesfully, therefore tell game to spawn player */
+			gameController.SpawnPlayer();
 		} else 	{
 			Debug.Log("Something happened to the terrain! Maybe it doesn't exist, or maybe it's mispelled in the mapfile!");
 			throw new ArgumentNullException();

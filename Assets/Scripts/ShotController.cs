@@ -2,11 +2,15 @@
 using System.Collections;
 
 public class ShotController : MonoBehaviour {
+	public GameController gameController;
 	public float shotSpeed = 4f;
 	public float selfDestructDelay = 0.001f; //useful for adjusting multi collisions with one shot
 
 	void Start()
 	{
+		if (!gameController)
+			gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+
 		float rotation = (transform.rotation.eulerAngles.z * Mathf.Deg2Rad); //math, cuz unity has euler angles in degrees but Mathf only accepts rad angles *facepalm*
 		rigidbody2D.AddForce(new Vector2(Mathf.Sin(-rotation)*100*shotSpeed,Mathf.Cos(-rotation)*100*shotSpeed)); //the sin and cosin functions basically work to return either -1, 0, or 1, to determine the direction of the force
 	}

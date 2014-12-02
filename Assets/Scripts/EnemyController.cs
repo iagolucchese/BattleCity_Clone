@@ -94,8 +94,8 @@ public class EnemyController : MonoBehaviour {
 	void OnDestroy(){
 		//TODO: insert death animation here
 
-		GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+		GameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		if (gameController)
-			gameController.GetComponent<EnemySpawner>().enemyKilled(this.gameObject);
+			gameController.EnemyDestroyed();
 	}
 }
