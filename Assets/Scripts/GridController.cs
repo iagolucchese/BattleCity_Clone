@@ -69,10 +69,12 @@ public class GridController : MonoBehaviour {
 					if (mapfileToSpritesMatrix[i,j] == "spawner") {
 						GameObject newSpawner = Instantiate(enemySpawnerPrefab,gridMatrix[i,j].transform.position,Quaternion.Euler(Vector3.zero)) as GameObject;
 						gameController.enemySpawner.listOfEnemySpawners.Add(newSpawner);
+						newSpawner.name = "EnemySpawner" + newSpawner.GetInstanceID();
 					}
 					if (mapfileToSpritesMatrix[i,j] == "playerSpawn") {
 						GameObject newSpawner = Instantiate(enemySpawnerPrefab,gridMatrix[i,j].transform.position,Quaternion.Euler(Vector3.zero)) as GameObject;
 						gameController.playerSpawn = newSpawner;
+						newSpawner.name = "PlayerSpawner";
 					}
 
 					if (indexOfSprite < 0)
@@ -96,8 +98,7 @@ public class GridController : MonoBehaviour {
 			/* finished parsing succesfully, therefore tell game to spawn player */
 			gameController.SpawnPlayer();
 		} else 	{
-			Debug.Log("Something happened to the terrain! Maybe it doesn't exist, or maybe it's mispelled in the mapfile!");
-			throw new ArgumentNullException();
+			throw new ArgumentNullException("Something happened to the terrain! Maybe it doesn't exist, or maybe it's mispelled in the mapfile!");
 		}
 	}
 
@@ -107,7 +108,7 @@ public class GridController : MonoBehaviour {
 		{
 			for (int i = 0; i < numberOfLines; i++)
 			{
-				Vector3 position = new Vector3((squareSizePixels/100)*i+scaleFactorForX,(squareSizePixels/100)*j+scaleFactorForY,2.0f);
+				Vector3 position = new Vector3((squareSizePixels/100)*i+scaleFactorForX,(squareSizePixels/100)*j+scaleFactorForY,this.transform.position.z);
 				
 				GameObject tile = (GameObject)Instantiate(prefabSpriteQuad, position, Quaternion.identity);
 				tile.transform.parent = transform;

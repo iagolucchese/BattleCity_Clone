@@ -27,7 +27,7 @@ public class ShotController : MonoBehaviour {
 		//gameObject.GetComponent<BoxCollider2D>().size += new Vector2(0.2f,0f); //this is basically an "explosion collision", by making the box bigger when it collides with something
 
 		if (other.gameObject.layer == gameObject.layer) {
-			Destroy(other.gameObject);
+			other.GetComponent<DeathController>().KillCharacter();
 			DestroyThis(0f);
 		}
 

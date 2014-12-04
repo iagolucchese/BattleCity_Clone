@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	
 	void Start () 
 	{
+		shotContainer = GameObject.FindGameObjectWithTag ("ShotContainer");
 		//transform.localScale = new Vector3(transform.localScale.x * playerScale,transform.localScale.y * playerScale,transform.localScale.z);
 	}
 	
@@ -56,9 +57,5 @@ public class PlayerController : MonoBehaviour
 				transform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);
 			else if (y < 0)
 				transform.rotation = Quaternion.Euler(0.0f,0.0f,180.0f);		 
-	}
-
-	void OnDestroy() { //don't spawn things in here
-		GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().PlayerDied();
 	}
 }

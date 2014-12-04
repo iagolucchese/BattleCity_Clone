@@ -11,12 +11,14 @@ public class LivesScoreManager : MonoBehaviour {
 
 	public void ChangeScore(int scoreChange) {
 		score += scoreChange;
-		scoreText.text = score.ToString();
+		if (scoreText) 
+			scoreText.text = score.ToString();
 	}
 
 	public void RemoveLife() {
 		lives--;
-		lifeIcons[lives].enabled = false;
+		if (lifeIcons != null) 
+			lifeIcons[lives].enabled = false;
 	}
 
 	void Start () {

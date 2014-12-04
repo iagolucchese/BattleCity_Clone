@@ -11,7 +11,7 @@ standardTerrain
 1@brickFull,2@blank,14@brickFull,2@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,1@blank,6@brickFull,4@blank,6@brickFull,1@blank,1@brickFull
-1@brickFull,18@blank,1@brickFull
+1@brickFull,9@blank,1@playerSpawn,8@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull
 1@brickFull,18@blank,1@brickFull

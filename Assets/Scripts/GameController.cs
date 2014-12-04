@@ -16,11 +16,11 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void PlayerDied(){
-		if (livesScoreManager.lives <= 1) {
+		livesScoreManager.RemoveLife();
+		if (livesScoreManager.lives <= 0) {
 			//TODO: Game over code here
 		}
 		else {
-			livesScoreManager.RemoveLife();
 			SpawnPlayer();
 		}
 	}

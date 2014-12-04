@@ -49,7 +49,6 @@ public class EnemyController : MonoBehaviour {
 
 	void NewRandomDirection() {
 		if (Time.time > lastTimeDirectionChanged+pickRandomDirectionDelay) { //if enough time has passed since last direction pick
-			Debug.Log("New direction");
 			int newDirection = UnityEngine.Random.Range(0,directions.Length);
 
 			rigidbody2D.velocity = Vector2.zero; //stops moving
@@ -89,13 +88,5 @@ public class EnemyController : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D other) {
 		if (other.collider.tag == "Wall" || other.collider.tag == "Enemy")
 			NewRandomDirection();
-	}
-
-	void OnDestroy(){
-		//TODO: insert death animation here
-
-		GameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-		if (gameController)
-			gameController.EnemyDestroyed();
 	}
 }
