@@ -5,6 +5,8 @@ public class ShotController : MonoBehaviour {
 	public GameController gameController;
 	public float shotSpeed = 4f;
 	public float selfDestructDelay = 0.001f; //useful for adjusting multi collisions with one shot
+	public string killsTagged; //kills anything tagged with this, plus other shots and walls by default
+	public GameObject explosionPrefab;
 
 	void Start()
 	{
@@ -24,25 +26,24 @@ public class ShotController : MonoBehaviour {
 	}
 
 	void CollisionDetected(Collider2D other){
-		//gameObject.GetComponent<BoxCollider2D>().size += new Vector2(0.2f,0f); //this is basically an "explosion collision", by making the box bigger when it collides with something
-
-		if (other.gameObject.layer == gameObject.layer) {
+		if (other.gameObject.tag == killsTagged || other.gameObject.tag == "PlayerHouse") {
 			other.GetComponent<DeathController>().KillCharacter();
 			DestroyThis(0f);
 		}
-
-		if(other.tag == "Shot")
+		else if(other.tag == "Shot")
 			DestroyThis(selfDestructDelay);
 
-		if (other.tag == "Wall") {
+		else if (other.tag == "Wall") {
 			Destroy(other.gameObject);
-			DestroyThis(selfDestructDelay);//through this delay in destroy, i intend to take out anything that immediatly collides with the shot, but hopefully not anything behind it
+			DestroyThis(selfDestructDelay);//this mini-delay allows the shot to also work on anything else nearby, emulating a "splash" effect
 		}
+		else if(other.tag == "Metal")
+			DestroyThis();
 	}
 
 	void DestroyThis(float delay = 0f) {
-		//TODO: Insert shot explosion animation here
-
+		if (explosionPrefab)
+			Instantiate(explosionPrefab,this.transform.position,this.transform.rotation);
 		Destroy(this.gameObject,delay);
 	}
 }

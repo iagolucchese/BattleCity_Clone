@@ -7,18 +7,21 @@ public class GameController : MonoBehaviour {
 	public GameObject boundaries;
 	public GameObject grid;
 	public LivesScoreManager livesScoreManager;
-	public EnemySpawner enemySpawner;
-	public GameObject playerSpawn;
+	public EnemySpawner enemySpawnerScript;
+	public GameObject playerSpawner;
+	public GameObject gameOverText;
+
+	private bool gameStopped = false;
 
 	public void EnemyDestroyed() {
 		livesScoreManager.ChangeScore(10); //fixed score at 10 right now
-		enemySpawner.enemyKilled();
+		enemySpawnerScript.enemyKilled();
 	}
 
 	public void PlayerDied(){
 		livesScoreManager.RemoveLife();
 		if (livesScoreManager.lives <= 0) {
-			//TODO: Game over code here
+			gameOver();
 		}
 		else {
 			SpawnPlayer();
@@ -26,19 +29,25 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void SpawnPlayer() {
-		if (playerSpawn)
-			Instantiate (playerPrefab, playerSpawn.transform.position, playerSpawn.transform.rotation);
+		if (playerSpawner)
+			Instantiate (playerPrefab, playerSpawner.transform.position, playerSpawner.transform.rotation);
 		else
 			throw new UnityException("Failed to acquire the player spawn position. Did you set one at the mapfile?");
 	}
 
-	// Use this for initialization
-	void Start () {
-
+	public void gameOver() {
+		gameOverText.SetActive(true); //shows the game over text
+		audio.Stop(); //stops the bgm
+		gameStopped = true; //marks the game as stopped
+		Time.timeScale = 0f; //time-stops the game
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-	
+		if (gameStopped){ //if the game is stopped
+			if (Input.GetKey("r")) { //if the R key has been pressed
+				Time.timeScale = 1f; //restore time to the game
+				Application.LoadLevel(Application.loadedLevelName); //reloads the level
+			}
+		}
 	}
 }

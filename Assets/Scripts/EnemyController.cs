@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour {
 	public float moveSpeed = 2f, fireRate = 0.2f; //the enemy's move speed (higher = faster), and the fire rate (lower = faster)
 	private GameObject existingShot; //holds the shot that was already fired, for fire rate limiting purposes
 	private float nextFire; //a variable that tells the game how long in total should it wait to let the player fire again
-	
+	public int chanceOfRandomShot = 100; //chance of firing a random shot every frame
 	/* variables for the enemy AI */
 	public float pickRandomDirectionDelay = 0.5f; //minimum amount of time after the enemy bumps into a wall and before he changes direction
 	private float lastTimeDirectionChanged = 0f;
@@ -28,10 +28,14 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		hits = Physics2D.RaycastAll(shotSpawn.transform.position, shotSpawn.transform.up, 20f); //20f is just a big enough number for anything
-		foreach(RaycastHit2D h in hits) {
-			if (h.collider && h.collider.gameObject.tag == "Player")
-				FireShot();
+		if (UnityEngine.Random.Range(0,chanceOfRandomShot) == 1) //randomly rolls to fire a shot forward
+			FireShot();
+		else {
+			hits = Physics2D.RaycastAll(shotSpawn.transform.position, shotSpawn.transform.up, 20f); //20f is just a big enough number for anything
+			foreach(RaycastHit2D h in hits) {
+				if (h.collider && h.collider.gameObject.layer == 9)
+					FireShot();
+			}
 		}
 	}
 
@@ -75,18 +79,20 @@ public class EnemyController : MonoBehaviour {
 				break;
 			}
 			rigidbody2D.velocity = newVelocity;
-
 			lastTimeDirectionChanged = Time.time; //marks this time as the time this object last picked a new direction
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D other) {
-		if (other.collider.tag == "Wall" || other.collider.tag == "Enemy")
+	void collisionDetected(Collision2D other) {
+		if (other.collider.tag == "Wall" || other.collider.tag == "Enemy" || other.collider.tag == "Boundaries" || other.collider.tag == "Metal")
 			NewRandomDirection();
 	}
 
+	void OnCollisionEnter2D(Collision2D other) {
+		collisionDetected(other);
+	}
+
 	void OnCollisionStay2D(Collision2D other) {
-		if (other.collider.tag == "Wall" || other.collider.tag == "Enemy")
-			NewRandomDirection();
+		collisionDetected(other);
 	}
 }
